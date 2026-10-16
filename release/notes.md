@@ -1,3 +1,3 @@
-V2.0 - 43
+V2.0 - 44
 
-Mejoras de privacidad y del sistema de actualización.
+Mejoras al minimizar y volver a mostrar el medidor.
