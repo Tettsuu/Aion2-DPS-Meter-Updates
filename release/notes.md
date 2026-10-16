@@ -1,3 +1,3 @@
-V2.0 - 44
+V2.0 - 45
 
-Mejoras al minimizar y volver a mostrar el medidor.
+Nuevo icono flotante para minimizar y recuperar el medidor.
