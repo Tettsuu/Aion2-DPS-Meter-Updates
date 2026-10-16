@@ -19,12 +19,14 @@ async function request(route,options={}){
 }
 const repository=await request('');if(repository.private!==false)throw Error('Downloads channel must be public');
 const releases=await request('/releases?per_page=100');
-const release=releases.find(r=>r.tag_name===manifest.tag);
-if(!release||release.prerelease)throw Error('Missing prepared V2 release');
-const assets=await request(`/releases/${release.id}/assets`);
-if(assets.length!==2||manifest.assets.some(a=>!assets.some(b=>b.name===a.name&&b.state==='uploaded'&&b.size===a.bytes&&b.digest===`sha256:${a.sha256}`)))throw Error('Uploaded assets differ from the verified package');
-if(!release.draft){console.log(`Already published and verified: ${release.html_url}`);process.exit(0);}
+let release=releases.find(r=>r.tag_name===manifest.tag);
 const notes=await fs.readFile('release/notes.md','utf8');
+if(!release)release=await request('/releases',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag_name:manifest.tag,target_commitish:process.env.GITHUB_SHA,name:manifest.name,body:notes,draft:true,prerelease:false})});
+if(release.prerelease)throw Error('Unexpected prerelease');
+const assets=await request(`/releases/${release.id}/assets`);
+for(const asset of assets){const expected=manifest.assets.find(a=>a.name===asset.name);if(!expected||asset.state==='uploaded'&&(asset.size!==expected.bytes||asset.digest!==`sha256:${expected.sha256}`))throw Error('Uploaded assets differ from the verified package');}
+if(assets.length!==2||assets.some(a=>a.state!=='uploaded')){if(!release.draft)throw Error('Incomplete public release');console.log(`Prepared draft awaiting verified files: ${release.html_url}`);process.exit(0);}
+if(!release.draft){console.log(`Already published and verified: ${release.html_url}`);process.exit(0);}
 const published=await request(`/releases/${release.id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:manifest.name,body:notes,draft:false,prerelease:false,make_latest:'false'})});
 console.log(`Published verified V2: ${published.html_url}`);
 
