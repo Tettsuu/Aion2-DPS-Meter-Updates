@@ -1,0 +1,23 @@
+name: Publicar V2
+on:
+  push:
+    branches: [main]
+    paths: ['release/manifest.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-v2
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar y publicar los archivos preparados
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: node .github/scripts/publish-v2.mjs
+
