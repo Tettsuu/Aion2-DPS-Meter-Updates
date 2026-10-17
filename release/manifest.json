@@ -1,17 +1,16 @@
 {
-  "tag": "v3.1.117.50",
-  "name": "AION 2 DPS Meter Lunar · V2.0 - 47",
+  "tag": "v3.1.117.51",
+  "name": "AION 2 DPS Meter Lunar · V2.0 - 48",
   "assets": [
     {
-      "name": "Aion2-DPS-V2-3.1.117.50.zip",
-      "bytes": 116360366,
-      "sha256": "ca7635b639e5eb60309424bcc9c3a0528dbcfdada53f05baf9277c636afeb5e5"
+      "name": "Aion2-DPS-V2-3.1.117.51.zip",
+      "bytes": 116367075,
+      "sha256": "075b1c686f675b8e5406104e6292fa90fa476863f7bd10ac8c6ed84844f0393f"
     },
     {
-      "name": "Aion2-DPS-V2-3.1.117.50-Codigo-Fuente.zip",
-      "bytes": 55226477,
-      "sha256": "17af667928242ef8835f1cd97d7c52bdd7a0543dfdce6f498caa21a733e0eb4c"
+      "name": "Aion2-DPS-V2-3.1.117.51-Codigo-Fuente.zip",
+      "bytes": 55229589,
+      "sha256": "9fd98509c40c889325869c3d144048ab1dcd848e904be51812a92ef23417fc41"
     }
-  ],
-  "uploadedAssetsVerified": true
+  ]
 }
