@@ -1,4 +1,3 @@
-V2.0 - 47
+V2.0 - 48
 
-Mejorada la respuesta de los botones de actualización.
-La versión instalada aparece al pie del medidor.
+El icono flotante parpadea en arcoíris durante los eventos.
