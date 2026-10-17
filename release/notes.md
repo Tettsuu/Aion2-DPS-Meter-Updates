@@ -1,3 +1,4 @@
-V2.0 - 46
+V2.0 - 47
 
-Mejorada la minimización al icono flotante y la recuperación del medidor.
+Mejorada la respuesta de los botones de actualización.
+La versión instalada aparece al pie del medidor.
