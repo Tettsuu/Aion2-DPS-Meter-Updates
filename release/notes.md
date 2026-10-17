@@ -1,3 +1,3 @@
-V2.0 - 48
+V2.0 - 49
 
-El icono flotante parpadea en arcoíris durante los eventos.
+Corregido el icono flotante para que no se corte en los bordes de la pantalla.
